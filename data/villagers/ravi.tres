@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="VillagerData" format=3 uid="uid://bb4qyrk6qv4sg"]
+
+[ext_resource type="Script" uid="uid://btwoste1li3p4" path="res://resources/villager_data.gd" id="1"]
+[ext_resource type="Resource" uid="uid://dhwybwowltrbj" path="res://data/overlords/hearthwarden.tres" id="2"]
+
+[resource]
+script = ExtResource("1")
+id = &"ravi"
+villager_name = "Ravi"
+overlord = ExtResource("2")

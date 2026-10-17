@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scenes/ui/debug_overlay.gd" id="1_overlay"]
+
+[node name="DebugOverlay" type="CanvasLayer"]
+layer = 80
+script = ExtResource("1_overlay")
+
+[node name="Panel" type="PanelContainer" parent="."]
+offset_left = 12.0
+offset_top = 12.0
+offset_right = 60.0
+offset_bottom = 40.0
+
+[node name="Readout" type="Label" parent="Panel"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Year 0 / 1000
+Years left: 1000
+Age: 0
+FPS: 0"

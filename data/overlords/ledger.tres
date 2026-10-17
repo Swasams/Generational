@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="OverlordData" format=3 uid="uid://8ljvka0jdfrp"]
+
+[ext_resource type="Script" uid="uid://cwr1pbt8s8sq2" path="res://resources/overlord_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+display_name = "The Ledger"
+color = Color(0.788235, 0.635294, 0.152941, 1)
+talk_lines = Array[String](["Every grain counted, every debt remembered.", "The Ledger sees what you owe. And what you are owed.", "Trade is honest when the scales are.", "Write it down. Memory lies; ink does not."])

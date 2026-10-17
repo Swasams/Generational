@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="StationData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://resources/station_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+station_name = "Training Yard"
+group = &"fitness"
+color = Color(0.894118, 0.341176, 0.180392, 1)
+gains = Dictionary[StringName, int]({&"strength": 2, &"vitality": 1})

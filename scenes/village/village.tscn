@@ -1,0 +1,88 @@
+[gd_scene load_steps=35 format=3]
+
+[ext_resource type="Script" path="res://scenes/village/village.gd" id="1_village"]
+[ext_resource type="Script" path="res://scenes/village/iso_ground.gd" id="2_ground"]
+[ext_resource type="Script" path="res://scenes/village/village_bounds.gd" id="3_bounds"]
+[ext_resource type="Script" path="res://scenes/village/click_router.gd" id="4_router"]
+[ext_resource type="Script" path="res://scenes/village/cave_travel.gd" id="5_travel"]
+[ext_resource type="PackedScene" path="res://scenes/village/player.tscn" id="6_player"]
+[ext_resource type="PackedScene" path="res://scenes/ui/confirm_popup.tscn" id="7_confirm"]
+[ext_resource type="PackedScene" path="res://scenes/ui/debug_overlay.tscn" id="8_overlay"]
+[ext_resource type="Script" path="res://resources/overlord_data.gd" id="9_overlord_script"]
+[ext_resource type="Script" path="res://resources/villager_data.gd" id="10_villager_script"]
+[ext_resource type="Resource" path="res://data/overlords/matchmaker.tres" id="11_matchmaker"]
+[ext_resource type="Resource" path="res://data/overlords/ledger.tres" id="12_ledger"]
+[ext_resource type="Resource" path="res://data/overlords/silent_tongue.tres" id="13_silent_tongue"]
+[ext_resource type="Resource" path="res://data/overlords/hearthwarden.tres" id="14_hearthwarden"]
+[ext_resource type="Resource" path="res://data/villagers/meena.tres" id="15_meena"]
+[ext_resource type="Resource" path="res://data/villagers/kavi.tres" id="16_kavi"]
+[ext_resource type="Resource" path="res://data/villagers/selvi.tres" id="17_selvi"]
+[ext_resource type="Resource" path="res://data/villagers/arul.tres" id="18_arul"]
+[ext_resource type="Resource" path="res://data/villagers/thenu.tres" id="19_thenu"]
+[ext_resource type="Resource" path="res://data/villagers/mani.tres" id="20_mani"]
+[ext_resource type="Resource" path="res://data/villagers/valli.tres" id="21_valli"]
+[ext_resource type="Resource" path="res://data/villagers/ravi.tres" id="22_ravi"]
+[ext_resource type="PackedScene" path="res://scenes/ui/stats_box.tscn" id="23_stats_box"]
+[ext_resource type="PackedScene" path="res://scenes/ui/stats_panel.tscn" id="24_stats_panel"]
+[ext_resource type="PackedScene" path="res://scenes/ui/message_popup.tscn" id="25_message"]
+[ext_resource type="PackedScene" path="res://scenes/ui/villager_menu.tscn" id="26_villager_menu"]
+[ext_resource type="Script" path="res://scenes/village/station_prompt.gd" id="27_station_prompt"]
+[ext_resource type="Script" path="res://scenes/village/cave_leave_prompt.gd" id="28_leave_prompt"]
+[ext_resource type="Script" path="res://resources/station_data.gd" id="29_station_script"]
+[ext_resource type="Resource" path="res://data/stations/healers_hut.tres" id="30_healers_hut"]
+[ext_resource type="Resource" path="res://data/stations/training_yard.tres" id="31_training_yard"]
+[ext_resource type="Resource" path="res://data/stations/dance_circle.tres" id="32_dance_circle"]
+[ext_resource type="Resource" path="res://data/stations/scribes_hall.tres" id="33_scribes_hall"]
+[ext_resource type="Resource" path="res://data/stations/market_square.tres" id="34_market_square"]
+
+[node name="Village" type="Node2D"]
+script = ExtResource("1_village")
+exit_overlords = Array[ExtResource("9_overlord_script")]([ExtResource("11_matchmaker"), ExtResource("12_ledger"), ExtResource("13_silent_tongue"), ExtResource("14_hearthwarden")])
+villagers = Array[ExtResource("10_villager_script")]([ExtResource("15_meena"), ExtResource("16_kavi"), ExtResource("17_selvi"), ExtResource("18_arul"), ExtResource("19_thenu"), ExtResource("20_mani"), ExtResource("21_valli"), ExtResource("22_ravi")])
+stations = Array[ExtResource("29_station_script")]([ExtResource("30_healers_hut"), ExtResource("31_training_yard"), ExtResource("32_dance_circle"), ExtResource("33_scribes_hall"), ExtResource("34_market_square")])
+
+[node name="Ground" type="TileMapLayer" parent="."]
+texture_filter = 1
+script = ExtResource("2_ground")
+map_size = 50
+
+[node name="Bounds" type="StaticBody2D" parent="." node_paths=PackedStringArray("ground")]
+collision_layer = 1
+collision_mask = 0
+script = ExtResource("3_bounds")
+ground = NodePath("../Ground")
+
+[node name="World" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="Player" parent="World" instance=ExtResource("6_player")]
+
+[node name="ClickRouter" type="Node2D" parent="."]
+script = ExtResource("4_router")
+
+[node name="CaveTravel" type="Node" parent="." node_paths=PackedStringArray("player", "ground")]
+script = ExtResource("5_travel")
+player = NodePath("../World/Player")
+ground = NodePath("../Ground")
+
+[node name="CaveLeavePrompt" type="Node" parent="." node_paths=PackedStringArray("confirm_popup")]
+script = ExtResource("28_leave_prompt")
+confirm_popup = NodePath("../ConfirmPopup")
+
+[node name="StationPrompt" type="Node" parent="." node_paths=PackedStringArray("confirm_popup", "message_popup", "player")]
+script = ExtResource("27_station_prompt")
+confirm_popup = NodePath("../ConfirmPopup")
+message_popup = NodePath("../MessagePopup")
+player = NodePath("../World/Player")
+
+[node name="ConfirmPopup" parent="." instance=ExtResource("7_confirm")]
+
+[node name="MessagePopup" parent="." instance=ExtResource("25_message")]
+
+[node name="DebugOverlay" parent="." instance=ExtResource("8_overlay")]
+
+[node name="StatsBox" parent="." instance=ExtResource("23_stats_box")]
+
+[node name="StatsPanel" parent="." instance=ExtResource("24_stats_panel")]
+
+[node name="VillagerMenu" parent="." instance=ExtResource("26_villager_menu")]

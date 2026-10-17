@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="OverlordData" format=3 uid="uid://gbeon75n6d6c"]
+
+[ext_resource type="Script" uid="uid://cwr1pbt8s8sq2" path="res://resources/overlord_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+display_name = "The Matchmaker"
+color = Color(0.85098, 0.309804, 0.415686, 1)
+talk_lines = Array[String](["Have you met anyone yet? No? I know someone.", "A good match is a village's best harvest.", "Your mother married well. Will you?", "Love is a ledger too, child. Balance it."])

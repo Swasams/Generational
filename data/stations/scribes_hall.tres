@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="StationData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://resources/station_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+station_name = "Scribe's Hall"
+group = &"magic"
+color = Color(0.482353, 0.360784, 0.839216, 1)
+gains = Dictionary[StringName, int]({&"ink": 2, &"foresight": 1})

@@ -13,6 +13,7 @@ Full design: Notion → Parambariyam → Game Design Doc.
   - `super()` (not `.method()`)
 - **GDScript** with **static typing** everywhere: `var age: int = 0`, `func get_hp() -> int:`
 - 2D only.
+- **Use Palette colors only. Never grey.** Every visible color comes from `res://autoload/palette.gd` (autoload `Palette`). Shadows are `Palette.SHADOW` (INK_INDIGO at 30%); text and outlines are INK_INDIGO.
 
 ## Architecture
 - **Signals for anything cross-system.** Removing one script should not break others.

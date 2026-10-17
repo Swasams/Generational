@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="OverlordData" format=3 uid="uid://dhwybwowltrbj"]
+
+[ext_resource type="Script" uid="uid://cwr1pbt8s8sq2" path="res://resources/overlord_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+display_name = "The Hearthwarden"
+color = Color(0.180392, 0.611765, 0.560784, 1)
+talk_lines = Array[String](["The hearth is warm. Sit a while.", "Bread first, then prophecy.", "The Hearthwarden keeps the fire. We keep each other.", "Have you eaten today, child?"])

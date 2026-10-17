@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="OverlordData" format=3 uid="uid://c5mvsxptq4f7w"]
+
+[ext_resource type="Script" uid="uid://cwr1pbt8s8sq2" path="res://resources/overlord_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+display_name = "The Silent Tongue"
+color = Color(0.294118, 0.356863, 0.709804, 1)
+talk_lines = Array[String](["...", "Some things are safer unsaid.", "The Silent Tongue hears everything. Say nothing.", "Listen more. The spirits reward it."])

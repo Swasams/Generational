@@ -1,0 +1,72 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scenes/ui/villager_menu.gd" id="1_menu"]
+[ext_resource type="Script" path="res://scenes/ui/progress_dots.gd" id="2_dots"]
+
+[node name="VillagerMenu" type="CanvasLayer"]
+layer = 95
+script = ExtResource("1_menu")
+
+[node name="Panel" type="PanelContainer" parent="."]
+unique_name_in_owner = true
+offset_right = 260.0
+offset_bottom = 160.0
+
+[node name="VBox" type="VBoxContainer" parent="Panel"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="Name" type="Label" parent="Panel/VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Villager"
+
+[node name="Overlord" type="Label" parent="Panel/VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "Follower of ..."
+
+[node name="BondRow" type="HBoxContainer" parent="Panel/VBox"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Bond" type="Label" parent="Panel/VBox/BondRow"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Bond 0"
+
+[node name="Dots" type="Control" parent="Panel/VBox/BondRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(45, 12)
+layout_mode = 2
+size_flags_vertical = 4
+script = ExtResource("2_dots")
+
+[node name="Message" type="Label" parent="Panel/VBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(240, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 15
+text = ""
+autowrap_mode = 3
+
+[node name="Buttons" type="HBoxContainer" parent="Panel/VBox"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="TalkButton" type="Button" parent="Panel/VBox/Buttons"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Talk"
+
+[node name="GiftButton" type="Button" parent="Panel/VBox/Buttons"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Gift"
+
+[node name="CloseButton" type="Button" parent="Panel/VBox/Buttons"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Close"
